@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/userSlice";
+import { Button, TextField } from "@mui/material";
 
 const creds = {
   username: "azim",
@@ -19,7 +20,7 @@ const LoginApp = () => {
     ) {
       const user = {
         name: userInfo.username,
-        lastLoginTime: new Date(),
+        lastLoginTime: new Date().toLocaleString(),
         isAuthenticated: true,
       };
 
@@ -36,20 +37,36 @@ const LoginApp = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
+      <h3>Login Page</h3>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          width: "100%",
+          padding: "2rem",
+          display: "flex",
+          gap: "1rem",
+          flexDirection: "column",
+        }}
+      >
+        <TextField
           type="text"
           name="username"
           value={userInfo.username}
+          variant="standard"
+          label="username"
           onChange={handleChange}
         />
-        <input
+        <TextField
           type="password"
           name="password"
           value={userInfo.password}
+          variant="standard"
+          label="password"
           onChange={handleChange}
         />
-        <button type="submit">Login</button>
+        <Button variant="contained" type="submit">
+          Login
+        </Button>
       </form>
     </div>
   );
