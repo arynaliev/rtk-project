@@ -4,6 +4,7 @@ import {
   increment,
   decrement,
   incrementByAmount,
+  multiplyByAmount,
 } from "../../redux/slices/counterSlice";
 
 const CounterApp = () => {
@@ -25,12 +26,17 @@ const CounterApp = () => {
     dispatch(incrementByAmount(10));
   }
 
+  function onMultiplyByTen() {
+    dispatch(multiplyByAmount(10));
+  }
+
   return (
     <div>
       <button onClick={onMinusClick}>-</button>
       <p>{count}</p>
       <button onClick={onPlusClick}>+</button>
       <button onClick={onPlusTenClick}>+10</button>
+      <button onClick={onMultiplyByTen}>*10</button>
     </div>
   );
 };
